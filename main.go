@@ -15,15 +15,18 @@ import (
 
 var dirParam string
 var pwd string
-var param = flag.String("dir", "./", "配置文件路径")
+var param = "./"
 
 func main() {
+	if len(os.Args) > 1 {
+		param = os.Args[1]
+	}
 	flag.Parse()
-	dirParam, _ = filepath.Abs(*param)
+	dirParam, _ = filepath.Abs(param)
 	pwd, _ = os.Getwd()
 
 	// 遍历目录
-	err := filepath.Walk(*param, walkFunc)
+	err := filepath.Walk(param, walkFunc)
 	if err != nil {
 		fmt.Println(err)
 	}
