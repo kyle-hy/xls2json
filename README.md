@@ -11,5 +11,3 @@
 如源码执行:
 go run main.go ./cfg
 ```
-
-在当前目录生成json文件夹
